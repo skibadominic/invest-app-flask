@@ -36,7 +36,7 @@ O sistema calcula o desempenho de cada ativo em tempo real, buscado dados de Aç
 *Passo 2: Instalar as Dependências*
 - Abra um terminal na pasta do projeto e execute o comando:
 
-**pip install -r outros/requirements.txt**
+**pip install -r requirements.txt**
 **Recomendamos utilizar a Extenção 'SQLite' do autor alexcvzz**
 
 *Passo 3: Iniciar o Proejeto*
