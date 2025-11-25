@@ -1,8 +1,11 @@
 # Projeto: Sistema Auxiliar de Investimentos (InvestApp)
 
 *Nome:* Dominic Skiba, João Vicente, Pedro Matta
+
 *Curso:* Bacharelado em Engenharia de Software
+
 *Matéria:* Raciocínio Algorítimico
+
 *Professor:* Maicris Fernandes
 
 # 1. Descrição do Projeto
