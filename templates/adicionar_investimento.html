@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Adicionar Investimento{% endblock %}
+
+{% block content %}
+    <h1>Adicionar Novo Investimento</h1>
+    <p>O que você gostaria de adicionar à sua carteira?</p>
+
+    <div style="display: flex; gap: 20px;">
+        <div class="item-card" style="flex-basis: 50%;">
+            <h3>Ação (Bolsa)</h3>
+            <p>Busque por ações listadas na B3 (ex: PETR4). O sistema buscará o gráfico e o preço atual.</p>
+            <a href="/acoes" class="btn">Procurar Ações</a>
+        </div>
+
+        <div class="item-card" style="flex-basis: 50%;">
+            <h3>Renda Fixa</h3>
+            <p>Adicione manualmente seus CDBs, Tesouros, LCIs/LCAs ou outros investimentos de Renda Fixa.</p>
+            <a href="/adicionar_renda_fixa" class="btn">Adicionar Renda Fixa</a>
+        </div>
+    </div>
+{% endblock %}

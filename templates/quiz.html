@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz do Investidor{% endblock %}
+
+{% block content %}
+    <h1>Quiz de Perfil de Investidor</h1>
+    <p>Responda as perguntas para descobrirmos seu perfil.</p>
+
+    <form action="/quiz" method="POST">
+        
+        <h3>1. Qual seu principal objetivo ao investir?</h3>
+        <input type="radio" name="p1" value="1" required> (a) Preservar meu dinheiro, sem correr riscos. <br>
+        <input type="radio" name="p1" value="2"> (b) Um equilíbrio entre segurança e rentabilidade. <br>
+        <input type="radio" name="p1" value="3"> (c) Maximizar os ganhos, mesmo que arriscado. <br>
+        <br>
+
+        <h3>2. Por quanto tempo você pretende deixar o dinheiro investido?</h3>
+        <input type="radio" name="p2" value="1" required> (a) Menos de 1 ano. <br>
+        <input type="radio" name="p2" value="2"> (b) De 1 a 5 anos. <br>
+        <input type="radio" name="p2" value="3"> (c) Mais de 5 anos. <br>
+        <br>
+
+        <h3>3. Como você reage a uma queda de 20% nos seus investimentos?</h3>
+        <input type="radio" name="p3" value="1" required> (a) Vendo tudo imediatamente para não perder mais. <br>
+        <input type="radio" name="p3" value="2"> (b) Não faço nada e espero o mercado recuperar. <br>
+        <input type="radio" name="p3" value="3"> (c) Compro mais, pois é uma boa oportunidade. <br>
+        <br>
+
+        <h3>4. Qual seu nível de conhecimento sobre investimentos?</h3>
+        <input type="radio" name="p4" value="1" required> (a) Nenhum. Só conheço a poupança. <br>
+        <input type="radio" name="p4" value="2"> (b) Básico. Conheço CDB, Fundos e Tesouro Direto. <br>
+        <input type="radio" name="p4" value="3"> (c) Avançado. Entendo sobre Ações, Opções e Renda Variável. <br>
+        <br>
+
+        <h3>5. Quanto da sua renda você planeja investir regularmente?</h3>
+        <input type="radio" name="p5" value="1" required> (a) Menos de 10%. <br>
+        <input type="radio" name="p5" value="2"> (b) Entre 10% e 25%. <br>
+        <input type="radio" name="p5" value="3"> (c) Mais de 25%. <br>
+        <br>
+
+        <div>
+            <button type="submit">Enviar Respostas</button>
+        </div>
+    </form>
+{% endblock %}

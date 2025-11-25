@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Minha Carteira{% endblock %}
+
+{% block content %}
+    <h1>Minha Carteira de Investimentos</h1>
+    
+    {% if posicoes %}
+        <div class="item-card" style="background-color: #f0f0f0;">
+            <h3>Resumo da Carteira</h3>
+            <p>
+                <strong>Total Investido (Custo):</strong> 
+                R$ {{ "%.2f"|format(total_investido) }}
+            </p>
+            <p>
+                <strong>Valor Atual da Carteira:</strong> 
+                R$ {{ "%.2f"|format(valor_atual_total) }}
+            </p>
+            
+            {% if lucro_prejuizo_total >= 0 %}
+                <h3 class="lucro">
+                    Lucro Total: + R$ {{ "%.2f"|format(lucro_prejuizo_total) }}
+                </h3>
+            {% else %}
+                <h3 class="prejuizo">
+                    Prejuízo Total: R$ {{ "%.2f"|format(lucro_prejuizo_total) }}
+                </h3>
+            {% endif %}
+        </div>
+
+        <hr>
+        <h3>Minhas Posições</h3>
+
+        {% for item in posicoes %}
+            <div class="item-card">
+                <h4>{{ item['nome'] }} ({{ item['ticker'] or item['tipo_rendimento'] }})</h4>
+                
+                {% if item['lucro_prejuizo'] >= 0 %}
+                    <p class="lucro">
+                        <strong>Lucro/Prejuízo: + R$ {{ "%.2f"|format(item['lucro_prejuizo']) }}</strong>
+                    </p>
+                {% else %}
+                    <p class="prejuizo">
+                        <strong>Lucro/Prejuízo: R$ {{ "%.2f"|format(item['lucro_prejuizo']) }}</strong>
+                    </p>
+                {% endif %}
+
+                <ul>
+                    <li><strong>Posição ID:</strong> {{ item['id'] }}</li>
+                    <li><strong>Data da Compra:</strong> {{ item['data_compra_formatada'] or item['data_compra'] }}</li>
+                    <li><strong>Valor Investido:</strong> R$ {{ "%.2f"|format(item['valor_investido']) }}</li>
+                    <li><strong>Valor Atual (Posição):</strong> R$ {{ "%.2f"|format(item['valor_atual_item']) }}</li>
+                    
+                    {% if item['ticker'] %}
+                        <li><strong>Preço na Compra (Histórico):</strong> R$ {{ "%.2f"|format(item['preco_historico_compra']) }}</li>
+                        <li><strong>Quantidade (Calculada):</strong> {{ "%.4f"|format(item['quantidade_calculada']) }} cotas</li>
+                        <li><strong>Preço Atual:</strong> R$ {{ "%.2f"|format(item['preco_atual']) }}</li>
+                    {% else %}
+                        {% if item['tipo_rendimento'] == 'POS' %}
+                            <li><strong>Taxa:</strong> {{ item['taxa'] }}% do CDI</li>
+                        {% elif item['tipo_rendimento'] == 'PRE' %}
+                            <li><strong>Taxa:</strong> {{ item['taxa'] }}% ao ano</li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+                
+                <div style="margin-top: 15px;">
+                    <a href="/editar/{{ item['id'] }}" class="btn" style="background-color: #ffc107; color: black; margin-right: 10px;">
+                        Editar
+                    </a>
+
+                    <a href="{{ url_for('rota_vender_posicao', id_posicao=item['id']) }}" 
+                       onclick="return confirm('Tem certeza que quer vender esta posição?');"
+                       class="btn" style="background-color: #dc3545;">
+                        Vender Posição
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+
+    {% else %}
+        <p class="flash-message flash-info">Sua carteira está vazia.</p>
+    {% endif %}
+    
+    <br>
+    <a href="/dashboard">Voltar ao Dashboard</a>
+{% endblock %}

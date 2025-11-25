@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Ações Listadas{% endblock %}
+
+{% block content %}
+    <h1>Procurar Ações (Bolsa)</h1>
+    <p>Veja a lista completa ou pesquise pelo nome/ticker.</p>
+    
+    <form action="/acoes" method="POST">
+        <div>
+            <label for="nome_empresa">Pesquisar:</label>
+            <input type="text" id="nome_empresa" name="nome_empresa" required>
+            <button type="submit">Buscar</button>
+        </div>
+    </form>
+    <a href="/acoes">Limpar Busca (Ver Todos)</a>
+    
+    <hr>
+
+    {% if acoes %}
+        <ul style="list-style-type: none; padding: 0;">
+            {% for ticker, nome in acoes %}
+                <li class="item-card">
+                    <a href="/acao/{{ ticker }}">
+                        <strong>{{ nome }} ({{ ticker }})</strong>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="flash-message flash-error">Nenhum ativo encontrado.</p>
+    {% endif %}
+{% endblock %}

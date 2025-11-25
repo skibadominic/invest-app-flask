@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h2>Olá, {{ nome_usuario }}!</h2>
+    
+    {% if perfil_usuario %}
+        <p>Seu perfil de investidor é: <strong>{{ perfil_usuario }}</strong></p>
+    {% else %}
+        <p class="flash-message flash-error">Você ainda não tem um perfil. <a href="/quiz" style="color:white; font-weight:bold;">Faça o quiz!</a></p>
+    {% endif %}
+    
+    <hr>
+    
+    <h3>Menu do Usuário</h3>
+    <ul>
+        <li><a href="/quiz">Realizar/Refazer Quiz</a></li>
+        <li><a href="/carteira">Ver Minha Carteira</a></li>
+        <li><a href="/adicionar_investimento">Adicionar Investimento</a></li>
+        <li><a href="/metas">Minhas Metas</a></li>
+    </ul>
+    <div style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 20px; text-align: center;">
+        <p style="font-size: 0.9rem; color: #666;">Configurações da Conta</p>
+        <a href="/deletar_conta" 
+           onclick="return confirm('TEM CERTEZA? Sua conta e todos os seus investimentos serão apagados para sempre.');"
+           style="color: #dc3545; font-size: 0.85rem; text-decoration: none;">
+           Excluir minha conta permanentemente
+        </a>
+    </div>
+{% endblock %}

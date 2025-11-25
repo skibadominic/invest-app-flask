@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Investimento{% endblock %}
+
+{% block content %}
+    <h1>Editar Investimento</h1>
+    <h3>{{ posicao['nome'] }} ({{ posicao['tipo'] }})</h3>
+
+    <form action="/editar/{{ posicao['id'] }}" method="POST">
+        
+        <div>
+            <label for="valor_investido">Valor Total Investido (R$):</label>
+            <input type="number" step="0.01" id="valor_investido" name="valor_investido" value="{{ posicao['valor_investido'] }}" required>
+        </div>
+
+        <div>
+            <label for="data_compra">Data da Compra:</label>
+            <input type="date" id="data_compra" name="data_compra" value="{{ posicao['data_compra'] }}" required>
+        </div>
+        
+        <br>
+        <div>
+            <button type="submit">Salvar Alterações</button>
+            <a href="/carteira" class="btn" style="background-color: gray;">Cancelar</a>
+        </div>
+    </form>
+{% endblock %}

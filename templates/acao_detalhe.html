@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Detalhe: {{ ativo['nome'] }}{% endblock %}
+
+{% block content %}
+    <h1>{{ ativo['nome'] }} ({{ ativo['ticker'] }})</h1>
+    <hr>
+    
+    <h2>Gráfico do Último Ano</h2>
+    {% if caminho_grafico %}
+        <img src="{{ url_for('static', filename=caminho_grafico) }}" alt="Gráfico de {{ ativo['nome'] }}" style="width: 100%; max-width: 600px;">
+    {% else %}
+        <p class="flash-message flash-error">Não foi possível gerar o gráfico para este ativo.</p>
+    {% endif %}
+    
+    <hr>
+    
+    <h2>Adicionar à Carteira</h2>
+    
+    <form action="/acao/{{ ativo['ticker'] }}" method="POST">
+        <div>
+            <label for="valor_investido">Valor Total Investido (R$):</label>
+            <input type="number" step="0.01" id="valor_investido" name="valor_investido" required>
+        </div>
+        <div>
+            <label for="data_compra">Data da Compra:</label>
+            <input type="date" id="data_compra" name="data_compra" required>
+        </div>
+        <div>
+            <button type="submit">Adicionar</button>
+        </div>
+    </form>
+{% endblock %}

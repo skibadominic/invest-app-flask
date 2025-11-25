@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Minhas Metas{% endblock %}
+
+{% block content %}
+    <h1>Minhas Metas Financeiras</h1>
+
+    <div class="item-card" style="background-color: #e9ecef;">
+        <h3>Nova Meta</h3>
+        <form action="/metas" method="POST" style="display: flex; gap: 10px; align-items: end;">
+            <div>
+                <label>Título:</label>
+                <input type="text" name="titulo" placeholder="Ex: Carro Novo" required style="margin:0;">
+            </div>
+            <div>
+                <label>Valor Alvo (R$):</label>
+                <input type="number" name="valor_alvo" step="0.01" required style="margin:0;">
+            </div>
+            <div>
+                <label>Data Limite:</label>
+                <input type="date" name="data_limite" required style="margin:0;">
+            </div>
+            <button type="submit" class="btn btn-green" style="height: 40px;">Criar</button>
+        </form>
+    </div>
+
+    <hr>
+
+    {% if metas %}
+        {% for meta in metas %}
+            <div class="item-card">
+                <div style="display: flex; justify-content: space-between;">
+                    <div>
+                        <h3>{{ meta['titulo'] }}</h3>
+                        <p>Meta: <strong>R$ {{ "%.2f"|format(meta['valor_alvo']) }}</strong> até {{ meta['data_limite'] }}</p>
+                    </div>
+                    <div>
+                        <a href="/editar_meta/{{ meta['id'] }}" class="btn" style="background-color: #ffc107; color: black;">Editar</a>
+                        <a href="/deletar_meta/{{ meta['id'] }}" class="btn btn-danger" onclick="return confirm('Apagar meta?');">Excluir</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Você ainda não definiu nenhuma meta.</p>
+    {% endif %}
+{% endblock %}

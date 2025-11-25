@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Editar Meta{% endblock %}
+
+{% block content %}
+    <h1>Editar Meta</h1>
+    <form action="/editar_meta/{{ meta['id'] }}" method="POST">
+        <div>
+            <label>Título:</label>
+            <input type="text" name="titulo" value="{{ meta['titulo'] }}" required>
+        </div>
+        <div>
+            <label>Valor Alvo (R$):</label>
+            <input type="number" name="valor_alvo" step="0.01" value="{{ meta['valor_alvo'] }}" required>
+        </div>
+        <div>
+            <label>Data Limite:</label>
+            <input type="date" name="data_limite" value="{{ meta['data_limite'] }}" required>
+        </div>
+        <br>
+        <button type="submit" class="btn">Salvar Alterações</button>
+        <a href="/metas" class="btn" style="background-color: gray;">Cancelar</a>
+    </form>
+{% endblock %}

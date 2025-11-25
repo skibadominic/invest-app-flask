@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h1, h2, h3 {
+    color: #0056b3;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+button, .btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover, .btn:hover {
+    background-color: #0056b3;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.flash-message {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: #fff;
+}
+.flash-success {
+    background-color: #28a745;
+}
+.flash-error {
+    background-color: #dc3545;
+}
+.flash-info {
+    background-color: #17a2b8;
+}
+
+.item-card {
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+}
+.item-card h3, .item-card h4 {
+    margin-top: 0;
+}
+.lucro {
+    color: green;
+    font-weight: bold;
+}
+.prejuizo {
+    color: red;
+    font-weight: bold;
+}
+
+nav {
+    background-color: #343a40;
+    padding: 10px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    padding: 0 10px;
+}
+
+nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.danger-zone {
+    background-color: #fff0f0;
+    padding: 20px;
+    border: 1px solid #dc3545;
+    border-radius: 8px;
+    margin-top: 50px;
+}
