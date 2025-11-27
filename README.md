@@ -1,6 +1,6 @@
 # Projeto: Sistema Auxiliar de Investimentos (InvestApp)
 
-*Nome:* Dominic Skiba, João Vicente, Pedro Matta
+*Nome:* Dominic Skiba, João Vicente Kochisnski, Pedro Matta
 
 *Curso:* Bacharelado em Engenharia de Software
 
